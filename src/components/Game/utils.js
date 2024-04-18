@@ -24,24 +24,25 @@ export const getBoard = (rows, cols, snake, target) => {
   return board;
 }
 
-export const generateTarget = (rows, cols, snake) => {
-  const freeCells = [];
+export const generateTarget = (rows, cols, board, snake) => {
+  const freeCellsCount = (rows * cols) - snake.length;
 
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const isInSnake = snake.find(([snakeRow, snakeCol]) => snakeRow === row && snakeCol === col);
-
-      if (!isInSnake) {
-        freeCells.push([row, col]);
-      }
-    }
-  }
-
-  if (!freeCells.length) {
+  if (!freeCellsCount) {
     return null;
   }
 
-  const targetIndex = Math.round(Math.random() * (freeCells.length - 1));
+  let targetIndex = Math.round(Math.random() * (freeCellsCount - 1));
 
-  return freeCells[targetIndex];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (board[row][col] === STATES.EMPTY) {
+        if (targetIndex === 0) {
+          board[row][col] = STATES.TARGET;
+          return [row, col];
+        }
+
+        targetIndex--;
+      }
+    }
+  }
 }

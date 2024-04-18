@@ -9,6 +9,7 @@ export const Game = ({ config: { rows, cols, tickTime, borders } }) => {
   const [snake, setSnake] = useState(null);
   const [snakeDirection, setSnakeDirection] = useState(null);
   const [inputSnakeDirection, setInputSnakeDirection] = useState(null);
+  const [board, setBoard] = useState(null);
   const [target, setTarget] = useState(null);
   const [ticks, setTicks] = useState(0);
   const [isOver, setIsOver] = useState(false);
@@ -16,10 +17,13 @@ export const Game = ({ config: { rows, cols, tickTime, borders } }) => {
   useEffect(() => {
     if (!isOver) {
       const initSnake = [[Math.floor(rows / 2), Math.floor(cols / 2)]];
+      const initBoard = getBoard(rows, cols, initSnake);
+      const initTarget = generateTarget(rows, cols, initBoard, initSnake);
       setSnake(initSnake);
       setSnakeDirection(DIRECTIONS.LEFT);
       setInputSnakeDirection(DIRECTIONS.LEFT);
-      setTarget(generateTarget(rows, cols, initSnake));
+      setBoard(initBoard);
+      setTarget(initTarget);
       setTicks(0);
 
       const interval = setInterval(() => setTicks(ticks => ticks + 1), tickTime);
@@ -96,10 +100,15 @@ export const Game = ({ config: { rows, cols, tickTime, borders } }) => {
 
       if (target && nextCell[0] === target[0] && nextCell[1] === target[1]) {
         const newSnake = [nextCell, ...snake];
+        const newBoard = getBoard(rows, cols, newSnake);
+        const newTarget = generateTarget(rows, cols, newBoard, newSnake);
+        setBoard(newBoard);
         setSnake(newSnake);
-        setTarget(generateTarget(rows, cols, newSnake));
+        setTarget(newTarget);
       } else {
-        setSnake([nextCell, ...snake.slice(0, snake.length - 1)]);
+        const newSnake = [nextCell, ...snake.slice(0, snake.length - 1)];
+        setBoard(getBoard(rows, cols, newSnake, target));
+        setSnake(newSnake);
       }
     }
   }, [ticks]);
@@ -113,7 +122,7 @@ export const Game = ({ config: { rows, cols, tickTime, borders } }) => {
             {isOver ? <button className={styles['retry-button']} onClick={() => setIsOver(false)}>retry</button> : null}
           </div>
 
-          <Board state={getBoard(rows, cols, snake, target)} showBorders={borders} />
+          <Board state={board} showBorders={borders} />
         </>
       )}
     </div>
