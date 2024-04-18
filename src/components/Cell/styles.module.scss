@@ -1,0 +1,24 @@
+.cell {
+  width: 30px;
+  height: 30px;
+  border: solid 1px rgba(240, 240, 240, 0.5);
+  display: inline-block;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+  }
+}
+
+.head, .body {
+  background-color: #32CD32;
+}
+
+.head {
+  border: solid 8px #006400;
+}
+
+.target {
+  background-color: red;
+}

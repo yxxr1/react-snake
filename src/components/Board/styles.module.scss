@@ -1,0 +1,13 @@
+.board {
+  display: inline-flex;
+  flex-direction: column;
+  border: solid 2px transparent;
+}
+
+.borders {
+  border: solid 2px #666;
+}
+
+.row {
+  display: flex;
+}

@@ -1,0 +1,14 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header {
+    display: inline-block;
+  }
+
+  .retry-button {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}

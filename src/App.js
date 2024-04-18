@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Game } from './components/Game';
+import { Settings } from './components/Settings';
 
-function App() {
+const DEFAULT_CONFIG = {
+  rows: 15,
+  cols: 15,
+  tickTime: 150,
+  borders: false,
+};
+const getConfigHash = (config) => Object.values(config).join('_');
+
+export default function App() {
+  const [config, setConfig] = useState(DEFAULT_CONFIG);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Game key={getConfigHash(config)} config={config} />
+      <Settings values={config} onChange={setConfig} />
+    </>
   );
 }
-
-export default App;
