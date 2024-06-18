@@ -1,8 +1,8 @@
 export const KEYS_MAP = {
-  UP: 119,
-  LEFT: 97,
-  DOWN: 115,
-  RIGHT: 100,
+  UP: 87,
+  LEFT: 65,
+  DOWN: 83,
+  RIGHT: 68,
 };
 
 export const DIRECTIONS = {
