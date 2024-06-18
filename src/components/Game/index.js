@@ -56,10 +56,10 @@ export const Game = ({ config: { rows, cols, tickTime, borders } }) => {
         }
       }
 
-      window.document.addEventListener('keypress', keyHandler);
+      window.document.addEventListener('keydown', keyHandler);
 
       return () => {
-        window.document.removeEventListener('keypress', keyHandler);
+        window.document.removeEventListener('keydown', keyHandler);
       };
     }
   }, [isOver, snakeDirection]);
