@@ -1,24 +1,69 @@
 .cell {
   width: 30px;
   height: 30px;
-  border: solid 1px rgba(240, 240, 240, 0.5);
+  border: solid 0.5px rgba(240, 240, 240, 0.5);
   display: inline-block;
+  position: relative;
 
   .content {
+    border-radius: 5px;
+    position: absolute;
+  }
+
+  .head, .target {
     width: 100%;
     height: 100%;
     border-radius: 100px;
   }
-}
 
-.head, .body {
-  background-color: #32CD32;
-}
+  .head, .body {
+    background-color: #32CD32;
+  }
 
-.head {
-  border: solid 8px #006400;
-}
+  .head {
+    border: solid 8px #006400;
+  }
 
-.target {
-  background-color: red;
+  .target {
+    background-color: red;
+  }
+
+  .body {
+    &-horizontal {
+      width: 100%;
+      height: 50%;
+      top: 25%;
+    }
+
+    &-vertical {
+      width: 50%;
+      height: 100%;
+      left: 25%;
+    }
+
+    &-left-top, &-right-top, &-left-bottom, &-right-bottom {
+      width: 75%;
+      height: 75%;
+    }
+
+    &-left-top {
+      left: 0;
+      top: 0;
+    }
+
+    &-right-top {
+      right: 0;
+      top: 0;
+    }
+
+    &-left-bottom {
+      left: 0;
+      bottom: 0;
+    }
+
+    &-right-bottom {
+      right: 0;
+      bottom: 0;
+    }
+  }
 }
