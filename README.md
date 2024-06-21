@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Локальный запуск
+`npm install && npm run start`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Управление
+Управление осуществляется кнопками WASD на клавиатуре.
+* W — направление вверх
+* A — направление  влево
+* S — направление  вниз
+* D — направление  вправо
 
-## Available Scripts
+Нельзя изменить направление на противоположное.
 
-In the project directory, you can run:
+# Описание интерфейса
+Над игровым полем выводится счет текущей игры. По окончанию игры показывается кнопка «retry», по нажатию на которую игра начинается заново.
+Под игровым полем находятся настройки.
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Описание настроек
+* Rows — количество строк игрового поля. От 10 до 20.
+* Cols — количество столбцов игрового поля. От 10 до 20.
+* Tick time — время обновления состояния игры в миллисекундах (сколько времени пройдет между перемещениями змейки). От 50 до 1000.
+* Borders — границы игрового поля. Определяет сможет ли змейка переходить на зеркальную сторону поля при достижении границы.
+* Справа от каждой настройки выводится текущее значение с которым запущена игра в данный момент. Измененные настройки применяются нажатием кнопки «apply». При изменении настроек игра начинается заново.
